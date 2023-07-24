@@ -13,18 +13,31 @@
             <p>Take Care of Your Tasks</p>
         </div>
         <div class="input_tasks">
-            <form action="" method="post" id="input_tasks">
-                <input type="text" placeholder="Task" id="todo">
-                <input type="text" placeholder="Description" id="todo_description">
-                <input type="date" placeholder="Deadline" id="todo_deadline">
-                <button type="submit">Submit</button>
-            </form>
+          <!-- <form id="taskForm">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="text" id="description" placeholder="Description" required>
+            <input type="date" id="deadline" required>
+            <button type="submit">Add Task</button>
+          </form> -->
         </div>
-        <div class="tasks_table"></div>
+        <div class="tasks_table">
+          <template id="taskTemplate">
+            <div class="task-item">
+              <h3 class="task-title"></h3>
+              <p class="task-description"></p>
+              <p class="task-deadline"></p>
+              <p class="task-completedOn"></p>
+              <button class="completeBtn">Complete</button>
+              <button class="editBtn">Edit</button>
+              <button class="deleteBtn">Delete</button>
+            </div>
+          </template>
+        </div>
         <div class="buttons">
-            <button>All</button>
-            <button>Completed</button>
-            <button>Overdue</button>
+          <!-- <button data-filter="all">All</button>
+          <button data-filter="completed">Completed</button>
+          <button data-filter="not_completed">Not Completed</button>
+          <button data-filter="overdue">Overdue</button> -->
         </div>
     </div>
 </body>
