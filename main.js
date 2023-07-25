@@ -18,9 +18,9 @@ class UncompletedTodo {
 let completedTasks = [];
 let uncompletedTasks = [];
 
-const taskForm = document.createElement('form');
-taskForm.id = 'taskForm';
-taskForm.innerHTML = `
+const task_form = document.createElement('form');
+task_form.id = 'task_form';
+task_form.innerHTML = `
   <input type="text" id="title" placeholder="Title" required>
   <input type="text" id="description" placeholder="Description" required>
   <input type="date" id="deadline" required>
@@ -30,27 +30,22 @@ taskForm.innerHTML = `
 const tasksContainer = document.createElement('div');
 tasksContainer.id = 'tasks';
 
-function saveTasksToLocalStorage() {
+function saveToLocalStorage() {
   localStorage.setItem('uncompletedTasks', JSON.stringify(uncompletedTasks));
   localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
 }
 
-function getTasksFromLocalStorage() {
+function getFromLocalStorage() {
   uncompletedTasks = (JSON.parse(localStorage.getItem('uncompletedTasks')) || []).map(taskData => new UncompletedTodo(...Object.values(taskData)));
   completedTasks = (JSON.parse(localStorage.getItem('completedTasks')) || []).map(taskData => new CompletedTodo(...Object.values(taskData)));
 }
+getFromLocalStorage();
 
-function renderTasks() {
+function render_tasks() {
   tasksContainer.innerHTML = '';
-
-  // Render uncompleted tasks
   uncompletedTasks.forEach(task => tasksContainer.appendChild(createTaskElement(task)));
-
-  // Render completed tasks
   completedTasks.forEach(task => tasksContainer.appendChild(createTaskElement(task)));
-
-  // Save tasks to local storage
-  saveTasksToLocalStorage();
+  saveToLocalStorage();
 }
 
 function createTaskElement(task) {
@@ -95,7 +90,7 @@ function editTask(task) {
     task.deadline = newDeadline;
   }
 
-  renderTasks();
+  render_tasks();
 }
 
 const buttons = document.querySelectorAll('.buttons button');
@@ -105,37 +100,32 @@ buttons.forEach(button => {
 
 function addTask(title, description, deadline) {
   uncompletedTasks.push(new UncompletedTodo(title, description, deadline));
-  renderTasks();
+  render_tasks();
 }
 
 function completeTask(task) {
   const completedOn = new Date().toLocaleDateString();
   completedTasks.push(new CompletedTodo(task.title, task.description, task.deadline, completedOn));
   uncompletedTasks.splice(uncompletedTasks.indexOf(task), 1);
-  renderTasks();
+  render_tasks();
 }
 
 function deleteTask(task) {
   task instanceof CompletedTodo
     ? completedTasks.splice(completedTasks.indexOf(task), 1)
     : uncompletedTasks.splice(uncompletedTasks.indexOf(task), 1);
-  renderTasks();
+  render_tasks();
 }
 
-taskForm.addEventListener('submit', e => {
+task_form.addEventListener('submit', e => {
   e.preventDefault();
   const { title, description, deadline } = e.target.elements;
   addTask(title.value, description.value, deadline.value);
   e.target.reset();
 });
 
-document.body.appendChild(taskForm);
+document.body.appendChild(task_form);
 document.body.appendChild(tasksContainer);
-
-// Load tasks from local storage on page load
-getTasksFromLocalStorage();
-
-// ... (previous code remains unchanged)
 
 const allButton = document.createElement('button');
 allButton.textContent = 'All';
@@ -161,7 +151,7 @@ const buttonsContainer = document.createElement('div');
 buttonsContainer.className = 'buttons';
 buttonsContainer.append(allButton, completedButton, notCompletedButton, overdueButton);
 
-document.body.insertBefore(buttonsContainer, taskForm);
+document.body.insertBefore(buttonsContainer, task_form);
 
 function isTaskOverdue(task) {
   const today = new Date();
@@ -200,8 +190,4 @@ function filterTasks(filterType) {
   });
 }
 
-// Initial render of tasks
-getTasksFromLocalStorage();
 filterTasks('all');
-
-// ... (remaining code remains unchanged)

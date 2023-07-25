@@ -9,17 +9,17 @@
 <body>
     <div class="main">
         <div class="header">
-            <h1>Tasks Website</h1>
+            <h1>Tasks Manager</h1>
             <p>Take Care of Your Tasks</p>
         </div>
-        <div class="input_tasks">
-          <!-- <form id="taskForm">
+        <!-- <div class="input_tasks">
+          <form id="taskForm">
             <input type="text" id="title" placeholder="Title" required>
             <input type="text" id="description" placeholder="Description" required>
             <input type="date" id="deadline" required>
             <button type="submit">Add Task</button>
-          </form> -->
-        </div>
+          </form>
+        </div> -->
         <div class="tasks_table">
           <template id="taskTemplate">
             <div class="task-item">
@@ -27,9 +27,12 @@
               <p class="task-description"></p>
               <p class="task-deadline"></p>
               <p class="task-completedOn"></p>
-              <button class="completeBtn">Complete</button>
-              <button class="editBtn">Edit</button>
-              <button class="deleteBtn">Delete</button>
+              <div class="action-buttons">
+                <button class="completeBtn">Complete</button>
+                <button class="editBtn">Edit</button>
+                <button class="deleteBtn" style="background-color: rgb(227, 49, 49);">Delete</button>
+              </div>
+              <hr>
             </div>
           </template>
         </div>
@@ -43,25 +46,3 @@
 </body>
 <script src="main.js"></script>
 </html>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Task Manager</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Task Manager</h1>
-    <form id="taskForm">
-      <input type="text" id="title" placeholder="Title" required>
-      <input type="text" id="description" placeholder="Description" required>
-      <input type="date" id="deadline" required>
-      <button type="submit">Add Task</button>
-    </form>
-    <div id="tasks">
-      
-    </div>
-  </div>
-  <script src="main.js"></script>
-</body>
-</html> -->

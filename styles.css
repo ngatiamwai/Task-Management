@@ -1,56 +1,126 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    margin: 10vh;
-    border: 3px solid #b72424;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+
+body {
+  margin: 5vh;
+  /* border: 3px solid #b72424; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.main{
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.main {
+  /* max-width: 1000px; */
+  margin: 20px auto;
+  padding: 20px;
+  /* background-color: #e2d4f7; */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45vw;
 }
-  form {
+
+.task_form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  margin-top: 5vh;
+  flex-wrap: wrap;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 5vh;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #b28aea;
+  height: 5vh;
+  width: 10vw;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #7126d9;
+}
+
+.task-item {
+  width: 45vw;
+  margin-top: 5vh;
+}
+
+hr {
+  margin-top: 2vh;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  gap: 5vh;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+button[data-filter = "overdue"]{
+  background-color: #e72727;
+}
+button[data-filter = "overdue"]:hover{
+  background-color: #db7979;
+}
+.deleteBtn:hover{
+  background-color: #db7979;
+}
+
+@media screen and (max-width:800px){
+  body{
+    margin: 2vh;
+  }
+  .task-item {
+    width: 85vw;
+  }
+  button{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 5vh;
+    flex-wrap: wrap;
+    width: 20vw;
+    height: 4vh;
   }
   
-  input[type="text"], input[type="date"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}
